@@ -3,6 +3,23 @@ import streamlit as st
 from mistralai import Mistral
 import json
 
+# Service Worker 登録用のスクリプトを埋め込む
+service_worker_script = """
+<script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/service-worker.js')
+        .then(function(registration) {
+            console.log('Service Worker registered with scope:', registration.scope);
+        }, function(err) {
+            console.log('Service Worker registration failed:', err);
+        });
+    });
+}
+</script>
+"""
+st.markdown(service_worker_script, unsafe_allow_html=True)
+
 # マトリックス風のカスタムCSS（背景、文字色、カード風のスタイル）
 st.markdown(
     """
