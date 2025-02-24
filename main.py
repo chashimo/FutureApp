@@ -3,6 +3,22 @@ import streamlit as st
 from mistralai import Mistral
 import json
 
+# Link to manifest.json
+st.markdown(
+    """
+    <script>
+    (function() {
+        var link = document.createElement('link');
+        link.rel = 'manifest';
+        // manifest.json の URL を正しく指定してください。
+        link.href = '/manifest.json';
+        document.head.appendChild(link);
+    })();
+    </script>
+    """,
+    unsafe_allow_html=True
+)
+
 # Service Worker 登録用のスクリプトを埋め込む
 service_worker_script = """
 <script>
